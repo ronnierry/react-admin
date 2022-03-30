@@ -1,18 +1,19 @@
-import { Switch } from "react-router-dom";
-import { HashRouter as Router, Route } from "react-router-dom";
+import {  HashRouter  , Route, Routes } from "react-router-dom";
 import './App.less';
+// import history from "./config/RouterConfig";
 import Admin from './pages/Admin';
 import Login from './pages/Login';
+
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/" component={Admin} />
-        </Switch>
-      </Router>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Admin/>} />
+          <Route path="/login" element={<Login></Login>} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
