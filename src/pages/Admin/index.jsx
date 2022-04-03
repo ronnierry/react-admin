@@ -6,12 +6,14 @@ import './index.less'
 import imgPng from '../Login/images/logo.png'
 import LeftNav from '../../compent/LeftNav';
 import Home from '../Home';
+import SystemHeade from './SystemHeader';
 
 const { Header, Footer, Sider, Content } = Layout;
 export default function Admin() {
+  const user = getCurrentUser()
+
   let navigate = useNavigate();
   useEffect(() => {
-    let user = getCurrentUser()
     console.log('user', user)
     if (!user) {
       navigate('/login', { replace: true })
@@ -29,12 +31,13 @@ export default function Admin() {
           <LeftNav></LeftNav>
         </Sider>
         <Layout>
-          <Header>Header</Header>
+          <Header className='system-header'>
+            <SystemHeade username={user.username}></SystemHeade>
+          </Header>
           <Content>
             <Routes>
               <Route path="/home" element={<Home></Home>} />
             </Routes>
-
           </Content>
           <Footer>Footer</Footer>
         </Layout>
